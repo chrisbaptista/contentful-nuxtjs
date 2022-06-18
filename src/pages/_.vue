@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <h1>{{ page.fields.title }}</h1>
+    <h1>{{ pageTitle }}</h1>
     <div class="content" v-html="pageContent"></div>
   </v-container>
 </template>
@@ -18,7 +18,6 @@ export default {
       'content_type': 'page',
       'fields.urlPath': route.path
     }).then(results => {
-
       if (results.items.length == 0) {
         error({statusCode: 404, message: 'Page Not Found'});
         return
@@ -26,11 +25,26 @@ export default {
 
       const page = results.items[0];
       return {
-        page: page,
+        headers: {
+          title: page.fields.title,
+          meta: [
+            {hid: "og-url", name: "og:url", content: page.fields.urlPath},
+            {hid: "og-type", name: "og:type", content: "article"},
+            {hid: "og-title", name: "og:title", content: page.fields.title},
+            // {hid: "og-description", name: "og:description", content: ogDescription},
+            // {hid: "og-image", name: "og:image", content: image},
+          ]
+        },
+        pageTitle: page.fields.title,
         pageContent: documentToHtmlString(page.fields.pageContent)
       }
     }).catch(console.error)
 
+  },
+  head: function () {
+    return {
+      ...this.headers
+    }
   }
 }
 </script>
