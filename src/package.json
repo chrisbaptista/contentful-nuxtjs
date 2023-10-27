@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@contentful/rich-text-html-renderer": "^15.13.1",
-    "contentful": "^9.1.33",
+    "contentful": "^10.4.0",
     "core-js": "^3.25.0",
     "nuxt": "^2.15.8",
     "vue": "^2.7.9",
