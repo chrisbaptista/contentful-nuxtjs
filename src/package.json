@@ -10,13 +10,13 @@
   },
   "dependencies": {
     "@contentful/rich-text-html-renderer": "^15.13.1",
-    "contentful": "^9.1.33",
+    "contentful": "^9.3.7",
     "core-js": "^3.25.0",
     "nuxt": "^2.15.8",
     "vue": "^2.7.9",
     "vue-template-compiler": "^2.7.9",
     "vue-server-renderer": "^2.7.9",
-    "webpack": "^4.46.0"
+    "webpack": "^5.79.0"
   },
   "devDependencies": {
     "@nuxtjs/vuetify": "^1.12.3"
